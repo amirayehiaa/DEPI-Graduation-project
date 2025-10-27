@@ -1,0 +1,24 @@
+Feature: Login functionality for OpenCart
+
+  As a registered user
+  I want to be able to log in using my email and password
+  So that I can access my account dashboard
+
+  Scenario: Successful login with valid credentials
+    Given I am on the OpenCart login page
+    When I enter a valid email and password
+    And I click the "Login" button
+    Then I should be redirected to my account dashboard
+    And I should see a welcome message with my name
+
+  Scenario: Login attempt with invalid password
+    Given I am on the OpenCart login page
+    When I enter a valid email but an invalid password
+    And I click the "Login" button
+    Then I should see an error message saying "Warning: No match for E-Mail Address and/or Password."
+
+  Scenario: Login attempt with empty fields
+    Given I am on the OpenCart login page
+    When I leave the email and password fields empty
+    And I click the "Login" button
+    Then I should see a validation message asking to enter credentials
